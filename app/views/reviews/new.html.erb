@@ -1,0 +1,26 @@
+<div class="container p-4">
+<div class="border p-4">
+<h1>Leave a review for <%= @restaurant.name %></h1>
+<%= simple_form_for [@restaurant, @review] do |f|%>
+  <% if @restaurant.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-inputs">
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  </div>
+  <div class="form-actions btn btn-primary">
+    <%= f.button :submit, class: "btn-primary" %>
+  </div>
+
+<% end %>
+</div>
+</div>
+
+

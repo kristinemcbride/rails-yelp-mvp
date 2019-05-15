@@ -1,0 +1,48 @@
+<div class="container p-4 d-block text-center">
+<div class="border p-4">
+<h1><%= @restaurant.name%></h1>
+<br>
+<p>
+  <strong>Name:</strong>
+  <%= @restaurant.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @restaurant.address %>
+</p>
+
+<p>
+  <strong>Phone Number:</strong>
+  <%= @restaurant.phone_number%>
+</p>
+
+<p>
+  <strong>Cuisine:</strong>
+  <%= @restaurant.category %>
+</p>
+<br>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant), class: "btn btn-primary"%>
+<%= link_to 'Browse Other Restaurants', restaurants_path, class: "btn btn-primary"%>
+</div>
+<br>
+<br>
+<div class="border p-4">
+<h2>Reviews for <%= @restaurant.name%> </h2>
+<br>
+<% @restaurant.reviews.each do |review| %>
+  <p><strong>Comments:</strong> <%= review.content %>
+  <strong>  Rating:</strong> <%= review.rating %></p>
+<% end %>
+</div>
+<br>
+<div class="border p-4">
+<h2>Leave a review for <%= @restaurant.name %></h2>
+<%= simple_form_for [@restaurant, @review] do |f|%>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.button :submit, class: "btn-primary"%>
+<% end %>
+</div>
+</div>
+

@@ -1,0 +1,37 @@
+<div class="container p-4 d-block text-center">
+<div>
+  <h1 >The Restaurants</h1>
+  <br>
+</div>
+<div>
+<table class="table border">
+  <thead >
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th>Cuisine</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+      <tr>
+        <td><%= restaurant.name %></td>
+        <td><%= restaurant.address %></td>
+        <td><%= restaurant.phone_number %></td>
+        <td><%= restaurant.category %></td>
+        <td><%= link_to 'Restaurant Info', restaurant_path(restaurant.id), class: "btn btn-primary" %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+<div>
+  <%= link_to 'Add a new restaurant', new_restaurant_path, class: "btn btn-primary" %>
+</div>
+
+</div>
